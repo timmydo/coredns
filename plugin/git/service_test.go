@@ -9,7 +9,7 @@ import (
 func TestServices(t *testing.T) {
 	repo := &Repo{URL: "git@github.com", Interval: time.Millisecond * 100}
 
-	Start(repo)
+	start(repo)
 	if len(Services.services) != 1 {
 		t.Errorf("Expected 1 service, found %v", len(Services.services))
 	}
@@ -22,7 +22,7 @@ func TestServices(t *testing.T) {
 	repos := make([]*Repo, 5)
 	for i := 0; i < 5; i++ {
 		repos[i] = &Repo{URL: fmt.Sprintf("test%v", i), Interval: time.Second * 2}
-		Start(repos[i])
+		start(repos[i])
 		if len(Services.services) != i+1 {
 			t.Errorf("Expected %v service(s), found %v", i+1, len(Services.services))
 		}
@@ -35,13 +35,13 @@ func TestServices(t *testing.T) {
 	}
 
 	repo = &Repo{URL: "git@github.com", Interval: time.Second}
-	Start(repo)
+	start(repo)
 	if len(Services.services) != 5 {
 		t.Errorf("Expected %v service(s), found %v", 5, len(Services.services))
 	}
 
 	repo = &Repo{URL: "git@github.com", Interval: time.Second * 2}
-	Start(repo)
+	start(repo)
 	if len(Services.services) != 6 {
 		t.Errorf("Expected %v service(s), found %v", 6, len(Services.services))
 	}
@@ -60,7 +60,7 @@ func TestServices(t *testing.T) {
 	}
 
 	repo.Interval = 0
-	Start(repo)
+	start(repo)
 	if len(Services.services) != 0 {
 		t.Errorf("Expected %v service(s), found %v", 0, len(Services.services))
 	}
