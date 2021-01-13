@@ -17,6 +17,7 @@ var Directives = []string{
 	"nsid",
 	"bufsize",
 	"root",
+	"git",
 	"bind",
 	"debug",
 	"trace",
