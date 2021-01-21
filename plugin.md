@@ -131,6 +131,14 @@ The `fallthrough` directive should optionally accept a list of zones. Only queri
 in one of those zones should be allowed to fallthrough. See `plugin/pkg/fallthrough` for the
 implementation.
 
+## Mutating a Response
+
+If the plugin mutates a response it MUST make a copy of the entire response before doing so. A
+response is a pointer to a `dns.Msg` and as such you will be manipulating the original response,
+which could have been generated from a data store. E.g. the *file* plugin creates a response that
+the *rewrite* plugin then rewrites; not copying the data, means it's **also** mutating the data of
+the *file*'s data store. A response can be copied by using the `Copy()` method.
+
 ## General Guidelines
 
 Some general guidelines:
