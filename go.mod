@@ -1,4 +1,4 @@
-module github.com/coredns/coredns
+module github.com/timmydo/coredns
 
 go 1.13
 
@@ -10,6 +10,7 @@ require (
 	github.com/DataDog/datadog-go v3.5.0+incompatible // indirect
 	github.com/aws/aws-sdk-go v1.36.28
 	github.com/coredns/caddy v1.1.0
+	github.com/coredns/coredns v1.8.1
 	github.com/dnstap/golang-dnstap v0.3.0
 	github.com/dustin/go-humanize v1.0.0 // indirect
 	github.com/farsightsec/golang-framestream v0.3.0
